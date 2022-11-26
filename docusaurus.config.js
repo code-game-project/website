@@ -25,9 +25,22 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+      }),
+    ],
+  ],
+
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        hashed: true,
+        language: ['en'],
+        removeDefaultStemmer: true,
+        highlightSearchTermsOnTargetPage: true,
       }),
     ],
   ],
