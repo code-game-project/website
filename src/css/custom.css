@@ -1,0 +1,29 @@
+:root {
+  --ifm-color-primary: hsl(218, 65%, 35%);
+  --ifm-color-primary-dark: hsl(218, 65%, 30%);
+  --ifm-color-primary-darker: hsl(218, 65%, 25%);
+  --ifm-color-primary-darkest: hsl(218, 65%, 20%);
+  --ifm-color-primary-light: hsl(218, 65%, 40%);
+  --ifm-color-primary-lighter: hsl(218, 65%, 45%);
+  --ifm-color-primary-lightest: hsl(218, 65%, 50%);
+  --ifm-code-font-size: 95%;
+  --ifm-tabs-padding-vertical: 0.10rem;
+  --ifm-tabs-padding-horizontal: 0.7rem;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: hsl(218, 65%, 60%);
+  --ifm-color-primary-dark: hsl(218, 65%, 55%);
+  --ifm-color-primary-darker: hsl(218, 65%, 50%);
+  --ifm-color-primary-darkest: hsl(218, 65%, 45%);
+  --ifm-color-primary-light: hsl(218, 65%, 65%);
+  --ifm-color-primary-lighter: hsl(218, 65%, 55%);
+  --ifm-color-primary-lightest: hsl(218, 65%, 60%);
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.tabs {
+  margin-bottom: -0.8rem !important;
+}
