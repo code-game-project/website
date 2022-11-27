@@ -66,7 +66,12 @@ const config = {
             position: "left",
           },
           {
-            to: '/docs/specification',
+            to: '/docs/category/guides',
+            label: "Guides",
+            position: "left",
+          },
+          {
+            to: '/docs/category/specification',
             label: "Specification",
             position: "left",
           },
@@ -98,6 +103,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['csharp', 'java', 'powershell']
       },
     }),
 };

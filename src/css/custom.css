@@ -10,6 +10,7 @@
   --ifm-tabs-padding-vertical: 0.10rem;
   --ifm-tabs-padding-horizontal: 0.7rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-paragraph-margin-bottom: calc(var(--ifm-leading) * 0.5)
 }
 
 [data-theme='dark'] {
