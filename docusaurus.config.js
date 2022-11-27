@@ -78,7 +78,21 @@ const config = {
         ],
       },
       footer: {
-        links: [],
+        links: [
+          {
+            title: "Credits",
+            items: [
+              {
+                label: "Icons by RESHOT",
+                href: "https://www.reshot.com"
+              },
+              {
+                label: "Go logo: Copyright 2018 The Go Authors",
+                href: "https://go.dev/s/logos"
+              }
+            ]
+          }
+        ],
         copyright: `Copyright © ${new Date().getFullYear()} CodeGame Contributors. Built with Docusaurus.`,
       },
       prism: {

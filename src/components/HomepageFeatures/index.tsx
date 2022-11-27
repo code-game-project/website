@@ -11,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
 	title: 'Easy to Use',
-	Svg: require('@site/static/img/placeholder.svg').default,
+	Svg: require('@site/static/img/features/easy.svg').default,
     description: (
       <>
 		Only one command is required to quickly get started using CodeGame in your favorite programming language.
@@ -21,7 +21,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Many Supported Languages',
-    Svg: require('@site/static/img/placeholder.svg').default,
+    Svg: require('@site/static/img/features/languages.svg').default,
     description: (
       <>
 		The CodeGame protocol is programming language agnostic.
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Powerful Tooling',
-    Svg: require('@site/static/img/placeholder.svg').default,
+    Svg: require('@site/static/img/features/tooling.svg').default,
     description: (
       <>
 		The <a href="https://github.com/code-game-project/codegame-cli">CodeGame CLI</a> provides an easy way to get started with writing a player for any CodeGame game
