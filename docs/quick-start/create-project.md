@@ -31,3 +31,17 @@ Then choose your favorite programming language and enter the language specific i
 At the end, you will be asked whether you want to initialize Git, create a README or select a license.
 
 After you've followed all of the previous steps you can open the created `./guess-client` directory in your [code editor](setup#code-editor).
+
+## Updating the template
+
+When a new version is released the template must be updated to match the new features of the game.
+
+To update the client to the latest version supported by the game server, run:
+
+```bash
+codegame update
+```
+
+This command will update the event definitions to include new events of the new game version.
+
+Additionally, it will update the CodeGame libraries to the latest version supported by the game.
