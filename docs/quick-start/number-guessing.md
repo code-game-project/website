@@ -11,7 +11,7 @@ Now that we have a functioning template we can begin to create our player contro
 
 On this page you will learn how to send commands to the game server and how to receive and process events it sends back.
 
-Should you get stuck at any point. Look at the [complete code](#complete-code) at the end of the page and try to find out what you did differently.
+Should you get stuck at any point. Look at the [full code](#full-code) at the end of the page and try to find out what you did differently.
 If your code is identical and it still doesn't work, please [open an issue](https://github.com/code-game-project/website/issues/new) on GitHub.
 
 ## The event flow
@@ -658,7 +658,7 @@ Game ID: 2c65804a-e81e-4164-890e-c19f8dc40935
 The bot currently needs a lot of tries to guess the correct number. Try to improve it by using the [binary search algorithm](https://en.wikipedia.org/wiki/Binary_search_algorithm).
 :::
 
-## Complete code
+## Full code
 
 In case you get stuck somewhere. Here is the complete code of the example program:
 
