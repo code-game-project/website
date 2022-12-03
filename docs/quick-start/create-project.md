@@ -8,7 +8,7 @@ sidebar_position: 2
 
 CodeGame provides many different games. All officially supported games are listed on [games.code-game.org](https://games.code-game.org).
 
-For this guide we will choose _Number Guessing_ because it is the simplest game available, but still includes the most important features of CodeGame.
+For this guide we will choose [Number Guessing](https://github.com/code-game-project/number-guessing) because it is the simplest game available, but still includes the most important features of CodeGame.
 
 When you have chosen a game, you will need to copy its URL. In our case it is `games.code-game.org/number-guessing`.
 
