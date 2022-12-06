@@ -271,7 +271,7 @@ import { Game, Verbosity } from './number-guessing/game';
   </TabItem>
 </Tabs>
 
-The only missing part now is the code which receives the response of the server and tries the next number in case the current one is too low.
+The only thing missing now is the logic which selects the next number try depending on the response of the server.
 
 ### Listening for events
 
