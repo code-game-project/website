@@ -34,9 +34,9 @@ After you've followed all of the previous steps you can open the created `./gues
 
 ## Updating the template
 
-When a new version is released the template must be updated to match the new features of the game.
+When a new version of the game is released the template must be updated to match its new features.
 
-To update the client to the latest version supported by the game server, run:
+To update the client to the latest version, run:
 
 ```bash
 codegame update

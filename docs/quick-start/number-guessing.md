@@ -23,11 +23,11 @@ which are sent and received by the game server. To quickly get an overview of ev
 codegame docs games.code-game.org/number-guessing
 ```
 
-In this case it shows us that we can send the `guess` command to take a guess. As a response we will receive one of the three events `too_high`, `too_low` or `correct`.
+In this case it shows us that we can send the `guess` command to make a guess. As a response we will receive one of the three events `too_high`, `too_low` or `correct`.
 
 ## Creating the player controller
 
-To keep it simple out guessing bot will begin at 50 and and increase or decrease the number by 1 depending on the response until the correct number is found.
+To keep it simple our guessing bot will begin at 50 and increase or decrease the number by 1 depending on the response until the correct number is found.
 
 ### Sending commands
 
@@ -52,7 +52,7 @@ class Program
     static void Guess(Game game)
     {
         // To send a command to the server use the game.Send... methods.
-        // They take a command data object, which can be conveniently constructed by using the object initializer syntax like below.
+        // They take a command data object, which can be conveniently constructed using the object initializer syntax like below.
         game.SendGuess(new GuessCmd
         {
             // set the fields of the command data object
@@ -271,7 +271,7 @@ import { Game, Verbosity } from './number-guessing/game';
   </TabItem>
 </Tabs>
 
-The only thing missing now is the logic which selects the next number try depending on the response of the server.
+The only thing missing now is the logic which selects the next number to try depending on the response of the server.
 
 ### Listening for events
 
@@ -655,7 +655,7 @@ Game ID: 2c65804a-e81e-4164-890e-c19f8dc40935
 ```
 
 :::info Challenge
-The bot currently needs a lot of tries to guess the correct number. Try to improve it by using the [binary search algorithm](https://en.wikipedia.org/wiki/Binary_search_algorithm).
+The bot currently needs a lot of tries to guess the correct number. Try to improve it using the [binary search algorithm](https://en.wikipedia.org/wiki/Binary_search_algorithm).
 :::
 
 ## Full code
@@ -680,7 +680,7 @@ class Program
     static void Guess(Game game)
     {
         // To send a command to the server use the game.Send... methods.
-        // They take a command data object, which can be conveniently constructed by using the object initializer syntax like below.
+        // They take a command data object, which can be conveniently constructed using the object initializer syntax like below.
         game.SendGuess(new GuessCmd
         {
             // set the fields of the command data object

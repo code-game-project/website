@@ -44,7 +44,7 @@ codegame run reconnect <username>
 
 :::tip
 A session is created automatically every time you join a game. You can view all of the current sessions with `codegame session list`.
-Sessions allow for a smooth development experience because you can quickly reconnect to a previous game after making a some code changes by using the `reconnect` command.
+Sessions allow for a smooth development experience because you can quickly reconnect to a previous game after making some code changes by using the `reconnect` command.
 :::
 
 When you are ready, you can build the project in release mode with the `build` command:
