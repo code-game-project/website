@@ -8,6 +8,7 @@ const config = {
   tagline: 'A rich ecosystem of tools and libraries for writing player controllers for many games.',
   url: 'https://code-game.org',
   baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
