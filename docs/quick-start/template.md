@@ -85,6 +85,23 @@ codegame build
 ```
 
   </TabItem>
+
+  <TabItem value="java" label="Java">
+
+```
+.
+├── pom.xml
+└── src
+    └── main
+        └── java
+            └── <package>
+                ├── App.java                   # the entry point for your application
+                └── <game_name>                # this directory is auto-generated and should not be edited manually
+                    ├── definitions
+                    └── Game.java
+```
+
+  </TabItem>
   <TabItem value="javascript" label="JavaScript">
 
 <Tabs groupId="js-runtime">

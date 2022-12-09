@@ -122,6 +122,48 @@ func main() {
 ```
 
   </TabItem>
+  <TabItem value="java" label="Java">
+
+```java title="src/main/java/guess/App.java"
+package guess;
+
+import java.io.IOException;
+
+import guess.numberguessing.Game;
+import guess.numberguessing.definitions.GuessCmd;
+
+public class App {
+  // begin guessing at 50
+  static int current = 50;
+
+  // We create a guess() method, which will be called every time we need to guess
+  // the next number.
+  // It takes the game as a parameter to send the command.
+  static void guess(Game game) {
+    // To send a command to the server use the game.send... methods.
+    // They take a command data object.
+    game.sendGuess(new GuessCmd(current));
+  }
+
+  public static void main(String[] args) throws IOException {
+    // Game.fromArgs() provides the command line interface and creates a Game object
+    // depending on the given arguments.
+    var game = Game.fromArgs(args, null);
+
+    // TODO: register event listeners
+
+    // call guess() once to send a single guess command with the number 50 to the
+    // server
+    guess(game);
+
+    // game.listen() blocks the main thread of the program until the socket
+    // disconnects from the server.
+    game.listen();
+  }
+}
+```
+
+  </TabItem>
   <TabItem value="javascript" label="JavaScript">
 
 <Tabs groupId="js-runtime">
@@ -382,6 +424,59 @@ game.OnTooHigh(func(data numberguessing.TooHighEventData) {
     current--
     guess(game)
 })
+
+// [...]
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+Use the `game.on...` methods to register an event callback.
+
+You need to supply a function (can be a closure like below), which takes an event data object as a parameter, that will be called
+every time the callback is received.
+
+Optionally, `Once` can be appended to the method name (e.g. `game.onCorrectOnce`) to only call the callback the first time the event is
+received after registering the event listener.
+
+```java title="src/main/java/guess/App.java"
+// [...]
+
+// register a `correct` event listener
+game.onCorrect(data -> {
+  // will be called every time the `correct` event is received
+  // `data` contains the `number` and `tries` fields
+
+  // print the solution
+  System.out.println(data.number + " is correct. You needed " + data.tries + " tries!");
+
+  // exit the application
+  System.exit(0);
+});
+
+// register a `too_low` event listener
+game.onTooLow(data -> {
+  // will be called every time the `too_low` event is received
+  // `data` contains a `number` field
+
+  System.out.println(data.number + " is too low!");
+
+  // try again with a larger number
+  current++;
+  guess(game);
+});
+
+// register a `too_high` event listener
+game.onTooHigh(data -> {
+  // will be called every time the `too_high` event is received
+  // `data` contains a `number` field
+
+  System.out.println(data.number + " is too high!");
+
+  // try again with a smaller number
+  current--;
+  guess(game);
+});
 
 // [...]
 ```
@@ -826,6 +921,83 @@ func main() {
   	// game.Run() blocks the main goroutine of the program until the socket disconnects from the server and starts listening for events.
   	game.Run()
 }
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java title="src/main/java/guess/App.java"
+package guess;
+
+import java.io.IOException;
+
+import guess.numberguessing.Game;
+import guess.numberguessing.definitions.GuessCmd;
+
+public class App {
+  // begin guessing at 50
+  static int current = 50;
+
+  // We create a guess() method, which will be called every time we need to guess
+  // the next number.
+  // It takes the game as a parameter to send the command.
+  static void guess(Game game) {
+    // To send a command to the server use the game.send... methods.
+    // They take a command data object.
+    game.sendGuess(new GuessCmd(current));
+  }
+
+  public static void main(String[] args) throws IOException {
+    // Game.fromArgs() provides the command line interface and creates a Game object
+    // depending on the given arguments.
+    var game = Game.fromArgs(args, null);
+
+    // register a `correct` event listener
+    game.onCorrect(data -> {
+      // will be called every time the `correct` event is received
+      // `data` contains the `number` and `tries` fields
+
+      // print the solution
+      System.out.println(data.number + " is correct. You needed " + data.tries + " tries!");
+
+      // exit the application
+      System.exit(0);
+    });
+
+    // register a `too_low` event listener
+    game.onTooLow(data -> {
+      // will be called every time the `too_low` event is received
+      // `data` contains a `number` field
+
+      System.out.println(data.number + " is too low!");
+
+      // try again with a larger number
+      current++;
+      guess(game);
+    });
+
+    // register a `too_high` event listener
+    game.onTooHigh(data -> {
+      // will be called every time the `too_high` event is received
+      // `data` contains a `number` field
+
+      System.out.println(data.number + " is too high!");
+
+      // try again with a smaller number
+      current--;
+      guess(game);
+    });
+
+    // call guess() once to send a single guess command with the number 50 to the
+    // server
+    guess(game);
+
+    // game.listen() blocks the main thread of the program until the socket
+    // disconnects from the server.
+    game.listen();
+  }
+}
+
 ```
 
   </TabItem>
