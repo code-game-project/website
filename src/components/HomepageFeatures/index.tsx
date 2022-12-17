@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
 		Only one command is required to quickly get started using CodeGame in your favorite programming language.
-		The APIs are designed to be easy to use and abstract all of the complex network logic away from the user.
+		The APIs are designed to be easy to use and abstract all of the complex networking logic away from the user.
       </>
     ),
   },
@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
       <>
 		The CodeGame protocol is programming language agnostic.
 		We provide libraries for many different programming languages including JavaScript/TypeScript, Go, C# and Java.
-		If your favorite language is not supported, you can easily implement the protocol in a weekend.
+		If your favorite language is not supported, you should be able to implement the protocol in a weekend.
       </>
     ),
   },
@@ -35,9 +35,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/tooling.svg').default,
     description: (
       <>
-		The <a href="https://github.com/code-game-project/codegame-cli">CodeGame CLI</a> provides an easy way to get started with writing a player for any CodeGame game
+		The <a href="https://github.com/code-game-project/codegame-cli">CodeGame CLI</a> provides an easy way to get started with writing a player controller for any CodeGame game
 		and to keep versions in sync.
-		The intuitive CGE language makes defining events for a game quick and easy and removes the need of manually writing definitions for every supported programming language.
+		The intuitive CGE language makes defining events for a game quick and easy and removes the need for manually writing definitions for every supported programming language.
       </>
     ),
   }
