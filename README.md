@@ -26,7 +26,7 @@ npm run build
 
 MIT License
 
-Copyright (c) 2022 CodeGame Contributors
+Copyright (c) 2022-2023 CodeGame Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -99,7 +99,7 @@ const config = {
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} CodeGame Contributors. Built with Docusaurus.`,
+        copyright: `Copyright © 2022-${new Date().getFullYear()} CodeGame Contributors. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
