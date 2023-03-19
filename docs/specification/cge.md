@@ -157,7 +157,7 @@ event my_event {
 
 On creation every CodeGame game can accept a config object, which may contain some properties that alter some aspects of the game. The structure of these objects can be defined using the `config` keyword:
 
-```
+```cge
 config {
   // properties
 }
@@ -184,11 +184,11 @@ command my_command {}
 
 // line comment documenting `my_event`
 event my_event {
-  /* block comment documenting `some_property`
+  /* block comment documenting `some_property` */
   some_property: string
 }
 
-// block comment documenting `my_enum`
+/* block comment documenting `my_enum` */
 enum my_enum {
   // line comment documenting `monday`
   monday,
