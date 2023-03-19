@@ -179,7 +179,7 @@ describing the game
 name my_game
 version 0.5
 
-// line commentdocuments `my_command`
+// line comment documenting `my_command`
 command my_command {}
 
 // line comment documenting `my_event`
