@@ -58,13 +58,13 @@ Examples:
 
 ```cge
 command move {
-  delta_x: number,
-  delta_y: number
+  delta_x: float,
+  delta_y: float
 }
 
 event player_killed {
   name: string,
-  time: number
+  time: float
 }
 ```
 
