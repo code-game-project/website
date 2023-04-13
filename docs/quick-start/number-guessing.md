@@ -32,7 +32,7 @@ To keep it simple our guessing bot will begin at 50 and increase or decrease the
 ### Sending commands
 
 We will begin by sending a single guess command with the number 50.
-To do that we will begin by modifiying the main entry point of the application:
+To do that we will begin by modifying the main entry point of the application:
 
 <Tabs groupId="lang">
   <TabItem value="csharp" label="C#">

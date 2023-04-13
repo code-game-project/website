@@ -6,7 +6,7 @@ sidebar_position: 3
 
 At its base CodeGame is a language agnostic protocol. But every game needs to create its own types for commands, events and other data.
 These types somehow need to be represented in the programming language of the client. Providing type definitions for every officially supported programming language for
-every game would be a huge maintanance hurdle.
+every game would be a huge maintenance hurdle.
 
 That's why CodeGame provides the *CodeGame Events Language* or *CGE* for short. It allows game developers to create one file
 containing the types defined by the game instead of one for every supported language.
@@ -167,13 +167,13 @@ A CGE file must only contain *one* config definition.
 
 ### Comments
 
-All comments in *CGE* are doc comments. Therefore comments are only allowed above `config`, `command`, `event`, `type`, `enum` or propertiy definitions and above the name meta field.
+All comments in *CGE* are doc comments. Therefore comments are only allowed above `config`, `command`, `event`, `type`, `enum` or property definitions and above the name meta field.
 They can be written as line comments (`// ...`) or block comments (`/* ... */`).
 
 Example:
 ```cge
 /*
-mulit-line block comment
+multi-line block comment
 describing the game
 */
 name my_game
