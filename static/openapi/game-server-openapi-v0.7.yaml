@@ -1,0 +1,315 @@
+---
+openapi: 3.0.2
+info:
+  title: CodeGame Game Server
+  version: '0.7'
+paths:
+  '/api/info':
+    get:
+      operationId: getInfo
+      description: Get information about the game server.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                  - cg_version
+                properties:
+                  name:
+                    description: The name of the game.
+                    type: string
+                  cg_version:
+                    description:
+                      The version of the CodeGame protocol spec that the
+                      server uses.
+                    type: string
+                  display_name:
+                    description: Pretty version of the name.
+                    type: string
+                  description:
+                    description: A short description of the game.
+                    type: string
+                  version:
+                    description: The game's version.
+                    type: string
+                  repository_url:
+                    description: The URL to the server's source code.
+                    type: string
+  '/api/events':
+    get:
+      operationId: getEvents
+      description: Get the CGE file for the server.
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                description: The entire CGE file as a string.
+                type: string
+  '/api/debug':
+    get:
+      operationId: debugServer
+      description:
+        Upgrade to a WebSocket connection that receives debug information
+        about the server.
+      responses:
+        '101':
+          description: Switch to WebSocket Protocol.
+  '/api/games':
+    get:
+      operationId: getGames
+      description: Get the number of private games and a map of public games.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - private
+                  - public
+                properties:
+                  private:
+                    description: The number of private games.
+                    type: number
+                  public:
+                    description: A list of public games.
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - id
+                        - players
+                      properties:
+                        id:
+                          description: The game ID.
+                          type: string
+                        players:
+                          description: The number of players in the game.
+                          type: number
+    post:
+      operationId: createGame
+      description: Create a new game.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - public
+                - protected
+              properties:
+                public:
+                  description: Whether the game should be listed publicly
+                  type: boolean
+                protected:
+                  description: Whether the game should be protected by a join secret.
+                  type: boolean
+                config:
+                  description: The configuration options to be used.
+                  type: object
+                  additionalProperties: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - game_id
+                properties:
+                  game_id:
+                    description: The game ID.
+                    type: string
+                  join_secret:
+                    description: The secret required to join the game.
+                    type: string
+        '403':
+          description: Unable to create a new game due to config limit.
+        '500':
+          description: Unable to create a new game due to technical limit.
+  '/api/games/{game_id}':
+    get:
+      operationId: getGameMetadata
+      description: Get the details of a given game by its id.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - players
+                  - protected
+                properties:
+                  id:
+                    description: The game ID.
+                    type: string
+                  players:
+                    description: The number of players in the game.
+                    type: integer
+                  protected:
+                    description: Whether the game is protected by a join secret.
+                    type: boolean
+                  config:
+                    description: The configuration options being used.
+                    type: object
+                    additionalProperties: true
+        '404':
+          description: Unable to find game.
+  '/api/games/{game_id}/spectate':
+    get:
+      operationId: spectate
+      description: Upgrade to a spectator WebSocket connection.
+      responses:
+        '101':
+          description: Switch to WebSocket Protocol.
+        '403':
+          description: Socket count limit reached.
+        '404':
+          description: Unable to find game.
+  '/api/games/{game_id}/debug':
+    get:
+      operationId: debugGame
+      description:
+        Upgrade to a WebSocket connection that receives debug information
+        about a game.
+      responses:
+        '101':
+          description: Switch to WebSocket Protocol.
+  '/api/games/{game_id}/players':
+    get:
+      operationId: getPlayers
+      description: Get the players in a game.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - players
+                properties:
+                  players:
+                    description: The IDs of all players mapped to their usernames.
+                    type: object
+                    additionalProperties: true
+        '404':
+          description: Unable to find game.
+    post:
+      operationId: createPlayer
+      description: Create a new player.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+              properties:
+                username:
+                  description: The username to give to the new player.
+                  type: string
+                join_secret:
+                  description: The username to give to the new player.
+                  type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - player_id
+                  - secret
+                properties:
+                  player_id:
+                    description: The player ID.
+                    type: string
+                  player_secret:
+                    description: The secret required to connect to and debug the player.
+                    type: string
+        '400':
+          description: Incomplete Request. The username was likely not provided.
+        '401':
+          description: Incorrect join secret provided.
+        '403':
+          description: Unable to create a new player due to config limit.
+        '404':
+          description: Unable to find game.
+        '500':
+          description: Unable to create a new player due to an unknown internal error.
+  '/api/games/{game_id}/players/{player_id}':
+    get:
+      operationId: getPlayer
+      description: Get the username of a player in a game.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - username
+                properties:
+                  username:
+                    description: The username of the player.
+                    type: string
+        '404':
+          description: Unable to find game or player.
+  '/api/games/{game_id}/connect':
+    get:
+      operationId: connect
+      description: Upgrade to a WebSocket connection linked to a player.
+      parameters:
+        - description: The player id.
+          in: query
+          name: player_id
+          schema:
+            type: string
+          required: true
+        - description: The player secret.
+          in: query
+          name: player_secret
+          schema:
+            type: string
+          required: true
+      responses:
+        '101':
+          description: Switch to WebSocket Protocol.
+        '403':
+          description: Incorrect secret or socket count limit reached.
+        '404':
+          description: Unable to find game.
+  '/api/games/{game_id}/players/{player_id}/debug':
+    get:
+      operationId: debugPlayer
+      description:
+        Upgrade to a WebSocket connection that receives debug information
+        about a player.
+      parameters:
+        - description: The player secret.
+          in: query
+          name: secret
+          schema:
+            type: string
+          required: true
+      responses:
+        '101':
+          description: Switch to WebSocket Protocol.
+        '403':
+          description: Incorrect secret or socket count limit reached.
+        '404':
+          description: Unable to find game.
