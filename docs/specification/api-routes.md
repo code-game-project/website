@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # API Routes
 
-Every CodeGame game server must implement the following few routes. The following is also available as a [Swagger file](pathname://../../static/openapi/game-server-openapi-v0.7.yaml).
+Every CodeGame game server must implement the following few routes. The following is also available as a [Swagger file](/openapi/game-server-openapi-v0.7.yaml).
 
 ## GET /api/info
 ### Description
@@ -100,9 +100,6 @@ Create a new game.
 
 ```yaml
 type: object
-required:
-  - public
-  - protected
 properties:
   public:
     description: Whether the game should be listed publicly
@@ -111,7 +108,7 @@ properties:
     description: Whether the game should be protected by a join secret.
     type: boolean
   config:
-    description: The configuration options to be used.
+    description: The configuration options to be used. (schema is game specific)
     type: object
     additionalProperties: true
 ```
@@ -130,7 +127,7 @@ properties:
     description: The game ID.
     type: string
   join_secret:
-    description: The secret required to join the game.
+    description: The join secret of the game. (required if protected == true)
     type: string
 ```
 #### 403
@@ -140,7 +137,7 @@ properties:
 
 ## GET /api/games/{game_id}
 ### Description
-Get the details of a given game by its id.
+Get the details of a given game by its ID.
 ### Responses
 #### 200
 **Content-Type:** `application/json`
@@ -228,7 +225,7 @@ properties:
     description: The username to give to the new player.
     type: string
   join_secret:
-    description: The username to give to the new player.
+    description: The join secret of the game (if it's protected).
     type: string
 ```
 ### Responses
@@ -286,10 +283,10 @@ properties:
 ### Description
 Upgrade to a WebSocket connection linked to a player.
 ### Parameters
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| player_id | query | The player id. | Yes | string |
-| player_secret | query | The player secret. | Yes | string |
+| Name          | Located in | Description        | Required | Schema |
+| ------------- | ---------- | ------------------ | -------- | ------ |
+| player_id     | query      | The player id.     | Yes      | string |
+| player_secret | query      | The player secret. | Yes      | string |
 
 ### Responses
 #### 101
@@ -303,9 +300,9 @@ Upgrade to a WebSocket connection linked to a player.
 ### Description
 Upgrade to a WebSocket connection that receives debug information about a player.
 ### Parameters
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| secret | query | The player secret. | Yes | string |
+| Name   | Located in | Description        | Required | Schema |
+| ------ | ---------- | ------------------ | -------- | ------ |
+| secret | query      | The player secret. | Yes      | string |
 
 ### Responses
 #### 101
